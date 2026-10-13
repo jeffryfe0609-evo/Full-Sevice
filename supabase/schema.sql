@@ -31,6 +31,16 @@ alter table public.profiles enable row level security;
 alter table public.app_state enable row level security;
 alter table public.attendance enable row level security;
 
+-- Shared group chat: only approved members can read/send.
+create table if not exists public.chat_messages (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null default auth.uid() references auth.users(id) on delete cascade,
+  message text not null check (char_length(trim(message)) between 1 and 2000),
+  created_at timestamptz not null default now()
+);
+create index if not exists chat_messages_created_at_idx on public.chat_messages (created_at desc);
+alter table public.chat_messages enable row level security;
+
 -- Helper checks run with invoker rights; policies remain the security boundary.
 create or replace function public.is_approved_member()
 returns boolean
@@ -94,6 +104,9 @@ grant select on public.profiles to authenticated;
 grant update (display_name) on public.profiles to authenticated;
 grant select, insert, update, delete on public.app_state to authenticated;
 grant select, insert, update on public.attendance to authenticated;
+grant select, insert, delete on public.chat_messages to authenticated;
+-- Column-level grants plus RLS control which profile fields each role may change.
+grant update on public.profiles to authenticated;
 
 -- Profiles: approved members can see approved members and their own profile.
 -- Users cannot approve themselves or change their role/status.
@@ -163,6 +176,25 @@ create policy "admins delete attendance"
 on public.attendance for delete to authenticated
 using (public.is_app_admin());
 
+-- Chat RLS: members can send and delete their own messages; admins can moderate.
+drop policy if exists "approved members read chat" on public.chat_messages;
+create policy "approved members read chat" on public.chat_messages
+for select to authenticated using (public.is_approved_member());
+
+drop policy if exists "approved members send own chat" on public.chat_messages;
+create policy "approved members send own chat" on public.chat_messages
+for insert to authenticated with check (
+ user_id = (select auth.uid()) and public.is_approved_member()
+ and char_length(trim(message)) between 1 and 2000
+);
+
+drop policy if exists "members delete own chat" on public.chat_messages;
+create policy "members delete own chat" on public.chat_messages
+for delete to authenticated using (
+ (user_id = (select auth.uid()) and public.is_approved_member())
+ or public.is_app_admin()
+);
+
 -- Allow realtime subscriptions for shared state and attendance.
 do $$
 begin
@@ -171,12 +203,19 @@ exception when duplicate_object then null;
 when undefined_object then null;
 end $$;
 
-do $$
+do $
 begin
   alter publication supabase_realtime add table public.attendance;
 exception when duplicate_object then null;
 when undefined_object then null;
-end $$;
+end $;
+
+do $
+begin
+  alter publication supabase_realtime add table public.chat_messages;
+exception when duplicate_object then null;
+when undefined_object then null;
+end $;
 
 -- INITIAL SETUP (do this only after creating your own account through the app):
 -- 1) Find your user UUID in Authentication > Users.
