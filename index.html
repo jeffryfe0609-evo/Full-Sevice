@@ -2,6 +2,72 @@
 <html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#101827"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Full Service"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml"><title>Full Service — Badminton Manager</title>
 <style>
 :root{color-scheme:dark;--bg:#0b1220;--panel:#121d2e;--panel2:#19263a;--text:#f4f7fb;--muted:#9eacc0;--line:#29384d;--lime:#c6f36b;--red:#ff9b9b}*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 500px at 10% -10%,#1d3450 0%,transparent 60%),var(--bg);font-family:system-ui,-apple-system,sans-serif;color:var(--text);padding-bottom:80px}button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:11px 13px;font-weight:750;background:var(--lime);color:#17210b}button.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line)}button.danger{background:#3b2029;color:#ffc1c1;border:1px solid #71404a}button:disabled{opacity:.4}.wrap{max-width:780px;margin:auto;padding:16px}.top{display:flex;justify-content:space-between;align-items:center;padding:8px 0 18px}.brand{display:flex;gap:10px;align-items:center}.logo{width:42px;height:42px;border-radius:14px;background:var(--lime);color:#17210b;display:grid;place-items:center;font-size:23px;font-weight:950}.eyebrow{font-size:10px;letter-spacing:1.5px;color:var(--muted);font-weight:800}.brand h1{margin:2px 0;font-size:22px}.pill,.tag{border:1px solid #3b4b60;border-radius:999px;padding:6px 9px;color:var(--muted);font-size:11px;font-weight:750}.hero{background:linear-gradient(135deg,#c6f36b,#a9df5b);color:#17210b;padding:20px;border-radius:22px;margin-bottom:14px}.hero h2{font-size:25px;line-height:1.1;margin:8px 0}.hero p{font-size:13px;line-height:1.5}.hero button{background:#17210b;color:white}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}.stat,.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:13px}.stat span{display:block;font-size:11px;color:var(--muted)}.stat strong{display:block;font-size:23px;margin-top:3px}.section{margin-top:18px}.section-head{display:flex;justify-content:space-between;align-items:center;margin:0 2px 10px}.section h3{margin:0;font-size:16px}.small{font-size:12px;color:var(--muted);line-height:1.5}.field label{font-size:12px;color:var(--muted);display:block;margin-bottom:5px}.field input,.field select,input.text{width:100%;background:#0b1423;color:var(--text);border:1px solid var(--line);border-radius:11px;padding:11px;min-width:0}.row{display:flex;gap:9px;align-items:end}.row>*{flex:1;min-width:0}.tabs{display:flex;gap:6px;overflow:auto;margin-bottom:10px}.tab{white-space:nowrap;background:var(--panel);border:1px solid var(--line);color:var(--muted);padding:9px 12px;border-radius:11px;font-size:12px}.tab.active{background:var(--lime);color:#17210b}.hidden{display:none!important}.player-list{display:grid;grid-template-columns:1fr 1fr;gap:7px}.player{display:flex;align-items:center;gap:7px;background:var(--panel2);padding:9px;border:1px solid var(--line);border-radius:11px;font-size:13px}.player input{accent-color:var(--lime)}.gender{font-size:10px;color:var(--muted);margin-left:auto}.match{margin-bottom:9px;padding:14px}.match-top{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;font-weight:850}.live{color:var(--lime)}.versus{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:14px 0}.team{background:var(--panel2);border-radius:13px;padding:13px 5px;text-align:center;min-height:64px;display:grid;place-content:center;gap:5px}.team.winner{background:var(--lime);color:#17210b;border:1px solid #e0ff9c}.team.winner b{color:#17210b}.team.winner span{color:#34471b}.team b{font-size:13px}.team span{font-size:12px;color:var(--muted)}.vs{font-size:11px;color:var(--muted);font-weight:900}.actions{display:flex;gap:7px}.actions button{flex:1;padding:10px 6px;font-size:12px}.empty{text-align:center;padding:20px 10px;color:var(--muted)}.table{width:100%;border-collapse:collapse;font-size:12px}.table th,.table td{text-align:left;padding:9px 4px;border-bottom:1px solid var(--line)}.table th{color:var(--muted)}.bottomnav{position:fixed;bottom:0;left:0;right:0;background:#0d1726f2;border-top:1px solid var(--line);display:flex;justify-content:center;padding:7px 6px calc(7px + env(safe-area-inset-bottom));z-index:4}.navinner{width:min(780px,100%);display:flex;justify-content:flex-start;gap:4px;overflow-x:auto;scrollbar-width:none}.navinner::-webkit-scrollbar{display:none}.rulelink{display:block;margin-top:12px;padding:12px 14px;background:var(--lime);color:#17210b;text-decoration:none;border-radius:12px;font-size:13px;font-weight:850;text-align:center}.rulesource{font-size:11px;color:var(--muted);line-height:1.55}.ruleitem{border-top:1px solid var(--line);padding:12px 0}.ruleitem:first-child{border-top:0}.ruleitem h4{margin:0 0 5px;font-size:14px}.ruleitem p{margin:0;color:var(--muted);font-size:12px;line-height:1.6}.rulebadge{display:inline-block;font-size:10px;font-weight:800;color:#17210b;background:var(--lime);border-radius:999px;padding:5px 8px}.navbtn{background:transparent;color:var(--muted);padding:7px 5px;font-size:11px;display:flex;flex:0 0 auto;min-width:58px;flex-direction:column;align-items:center;gap:3px}.navbtn[data-page='gameMode']{min-width:76px}.navbtn[data-page='rules']{min-width:76px}.navbtn span{font-size:18px}.navbtn.active{color:var(--lime)}.toast{position:fixed;bottom:85px;left:50%;transform:translateX(-50%);background:#eff8dc;color:#18210d;padding:11px 15px;border-radius:12px;font-size:13px;font-weight:750;z-index:9;max-width:90%}.modalback{position:fixed;inset:0;background:#0009;z-index:8;display:flex;align-items:flex-end;justify-content:center}.modal{background:var(--panel);border:1px solid var(--line);border-radius:22px 22px 0 0;width:min(780px,100%);padding:18px 15px calc(18px + env(safe-area-inset-bottom));max-height:88vh;overflow:auto}.modal h3{margin:0 0 12px}.scoregrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.modalfoot{display:flex;gap:8px;margin-top:14px}.modalfoot button{flex:1}@media(min-width:600px){.wrap{padding:24px}.player-list{grid-template-columns:repeat(3,1fr)}}
+
+/* iOS-inspired visual refresh */
+:root{color-scheme:dark;--bg:#080b12;--panel:rgba(27,32,43,.78);--panel2:rgba(43,49,63,.72);--text:#f5f5fa;--muted:#a4a9b7;--line:rgba(255,255,255,.10);--lime:#d4ff78;--red:#ff9b9b;--ios-blue:#8bb8ff}
+html{background:var(--bg);-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",system-ui,sans-serif;background:radial-gradient(650px 430px at 0% -5%,rgba(90,119,174,.23),transparent 68%),radial-gradient(560px 420px at 105% 15%,rgba(109,83,166,.15),transparent 70%),#080b12;letter-spacing:-.015em;padding-bottom:calc(100px + env(safe-area-inset-bottom));-webkit-font-smoothing:antialiased}
+.wrap{max-width:680px;padding:calc(12px + env(safe-area-inset-top)) 17px 28px}
+.top{padding:8px 2px 20px}
+.logo{width:43px;height:43px;border-radius:15px;background:linear-gradient(145deg,#e5ffae,#b9f45d);box-shadow:0 5px 18px rgba(198,243,107,.16)}
+.brand h1{font-size:23px;font-weight:760;letter-spacing:-.045em}
+.eyebrow{letter-spacing:1.25px}
+.pill,.tag{background:rgba(255,255,255,.045);border-color:rgba(255,255,255,.10);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.hero{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.18);border-radius:29px;padding:23px 21px;background:linear-gradient(135deg,#e0ffa0 0%,#c6f36b 48%,#a5df57 100%);box-shadow:0 18px 45px rgba(176,224,91,.10)}
+.hero:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;right:-65px;top:-78px;border:1px solid rgba(23,33,11,.13);box-shadow:0 0 0 20px rgba(23,33,11,.035),0 0 0 42px rgba(23,33,11,.025);pointer-events:none}
+.hero h2{font-size:30px;line-height:1.04;letter-spacing:-.055em;font-weight:790;margin:12px 0}
+.hero p{font-size:14px;line-height:1.55;max-width:320px}
+.hero button{border-radius:999px;padding:12px 17px;background:#17210b;box-shadow:0 4px 12px rgba(23,33,11,.18)}
+.stats{gap:9px;margin:14px 0}
+.stat,.card{background:linear-gradient(145deg,rgba(34,40,53,.87),rgba(20,24,34,.88));border:1px solid rgba(255,255,255,.075);border-radius:23px;padding:15px;box-shadow:0 7px 22px rgba(0,0,0,.10);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.stat span{font-size:12px;letter-spacing:-.01em}
+.stat strong{font-size:27px;letter-spacing:-.05em;font-weight:760}
+.section{margin-top:22px}
+.section-head{margin:0 3px 11px;align-items:baseline}
+.section h3,.section-head h3{font-size:17px;font-weight:750;letter-spacing:-.035em}
+.small{font-size:13px;line-height:1.55}
+.field label{font-size:12px;font-weight:650;letter-spacing:-.01em;margin:0 0 7px 2px;color:#b6bdcb}
+button{border-radius:15px;padding:12px 15px;font-weight:700;letter-spacing:-.02em;background:linear-gradient(180deg,#e1ffa4,#c6f36b);box-shadow:0 3px 10px rgba(198,243,107,.08);transition:transform .15s ease,opacity .15s ease}
+button:active{transform:scale(.975)}
+button.secondary{background:rgba(255,255,255,.065);color:var(--text);border:1px solid rgba(255,255,255,.09);box-shadow:none}
+button.danger{background:rgba(255,78,99,.12);color:#ffb7c0;border:1px solid rgba(255,78,99,.2);box-shadow:none}
+.field input,.field select,input.text{background:rgba(7,10,17,.56);border:1px solid rgba(255,255,255,.11);border-radius:15px;padding:13px 12px;min-height:46px;outline:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.025)}
+.field input:focus,.field select:focus,input.text:focus{border-color:rgba(139,184,255,.72);box-shadow:0 0 0 3px rgba(139,184,255,.12)}
+.row{gap:10px}
+.tabs{gap:7px;padding-bottom:3px}
+.tab{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:10px 15px}
+.tab.active{background:var(--lime);color:#17210b;border-color:transparent}
+.player{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);border-radius:15px;padding:11px}
+.player input{width:17px;height:17px;accent-color:var(--lime)}
+.match{padding:15px;margin-bottom:11px}
+.match-top{font-size:11px;letter-spacing:.04em}
+.versus{gap:7px;margin:15px 0}
+.team{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.055);border-radius:17px;padding:14px 7px;min-height:72px}
+.team b{font-size:13px;font-weight:700;line-height:1.3}
+.team.winner{background:linear-gradient(145deg,#e0ffa0,#c6f36b);border-color:rgba(255,255,255,.22);box-shadow:0 5px 18px rgba(198,243,107,.12)}
+.actions{gap:8px}
+.actions button{border-radius:13px}
+.table{font-size:13px}
+.table th,.table td{padding:12px 6px;border-bottom:1px solid rgba(255,255,255,.07)}
+.table th{font-weight:650}
+.ruleitem{padding:15px 0;border-color:rgba(255,255,255,.08)}
+.ruleitem h4{font-size:15px;letter-spacing:-.02em}
+.ruleitem p{font-size:13px;line-height:1.6}
+.rulelink{border-radius:15px;background:linear-gradient(180deg,#e1ffa4,#c6f36b)}
+.rulebadge{border-radius:999px}
+.bottomnav{left:12px;right:12px;bottom:calc(8px + env(safe-area-inset-bottom));padding:7px;border:1px solid rgba(255,255,255,.13);border-radius:25px;background:rgba(23,27,37,.72);box-shadow:0 12px 36px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.07);backdrop-filter:blur(30px) saturate(175%);-webkit-backdrop-filter:blur(30px) saturate(175%);justify-content:center
+}
+.navinner{width:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:3px;overflow:visible}
+.navbtn,.navbtn[data-page='rules']{min-width:0;flex:initial;border-radius:17px;padding:8px 2px 7px;font-size:10px;font-weight:650;color:#a7adbb;gap:4px;letter-spacing:-.015em;transition:background .15s ease,color .15s ease}
+.navbtn span{font-size:19px;line-height:1.15}
+.navbtn.active{background:rgba(212,255,120,.14);color:var(--lime)}
+.toast{bottom:calc(92px + env(safe-area-inset-bottom));border-radius:999px;background:rgba(241,249,223,.96);box-shadow:0 8px 28px rgba(0,0,0,.2);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.modalback{background:rgba(0,0,0,.52);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.modal{border-radius:28px 28px 0 0;background:rgba(25,30,41,.96);border:1px solid rgba(255,255,255,.11);box-shadow:0 -15px 45px rgba(0,0,0,.28);padding:22px 17px calc(20px + env(safe-area-inset-bottom))}
+.modal h3{font-size:20px;letter-spacing:-.04em}
+.scoregrid{gap:10px}
+@media(min-width:600px){.wrap{padding:28px 24px}.bottomnav{width:min(650px,calc(100% - 24px));left:50%;right:auto;transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}button{transition:none}}
 </style></head><body><div class="wrap">
 <header class="top"><div class="brand"><div class="logo">🏸</div><div><div class="eyebrow">BADMINTON MANAGER</div><h1>Full Service<span style="color:var(--lime)">.</span></h1></div></div><div class="pill" id="sessionPill">SESI BARU</div></header>
 <div id="home">
