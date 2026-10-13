@@ -22,7 +22,7 @@ let state;try{state=JSON.parse(localStorage.getItem('fullServiceState'))}catch(e
 function save(){localStorage.setItem('fullServiceState',JSON.stringify(state));render()}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function toast(s){$('toastRoot').innerHTML='<div class="toast">'+esc(s)+'</div>';setTimeout(()=>$('toastRoot').innerHTML='',2400)}
-function showPage(p){['home','players','matches','ranking','rules'].forEach(x=>$(x).classList.toggle('hidden',x!==p));document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.page===p));render()}
+function showPage(p){['home','players','matches','ranking','rules'].forEach(x=>$(x).classList.toggle('hidden',x!==p));document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.page===p));if(p==='rules')window.scrollTo({top:0,behavior:'auto'});render()}
 function setFilter(f){state.filter=f;renderPlayers();['all','M','F'].forEach(x=>$('filter-'+x).classList.toggle('active',x===f))}
 function setPresent(id,v){state.players.find(p=>p.id===id).present=v;save()}
 function addPlayer(){let name=$('newName').value.trim();if(!name)return toast('Masukkan nama pemain');if(state.players.some(p=>p.name.toLowerCase()===name.toLowerCase()))return toast('Nama pemain sudah ada');state.players.push({id:Math.max(0,...state.players.map(p=>p.id))+1,name,gender:$('newGender').value,present:true});$('newName').value='';save();toast('Pemain ditambahkan')}
