@@ -101,12 +101,12 @@ for each row execute procedure public.handle_new_user();
 
 grant usage on schema public to authenticated;
 grant select on public.profiles to authenticated;
-grant update (display_name) on public.profiles to authenticated;
+-- Members may edit display_name; admins can manage approval/role fields under RLS.
+grant update (display_name, status, role, approved_at) on public.profiles to authenticated;
 grant select, insert, update, delete on public.app_state to authenticated;
 grant select, insert, update on public.attendance to authenticated;
 grant select, insert, delete on public.chat_messages to authenticated;
--- Column-level grants plus RLS control which profile fields each role may change.
-grant update on public.profiles to authenticated;
+
 
 -- Profiles: approved members can see approved members and their own profile.
 -- Users cannot approve themselves or change their role/status.
@@ -196,26 +196,26 @@ for delete to authenticated using (
 );
 
 -- Allow realtime subscriptions for shared state and attendance.
-do $$
+do $$$
 begin
   alter publication supabase_realtime add table public.app_state;
 exception when duplicate_object then null;
 when undefined_object then null;
 end $$;
 
-do $
+do $$
 begin
   alter publication supabase_realtime add table public.attendance;
 exception when duplicate_object then null;
 when undefined_object then null;
-end $;
+end $$;
 
-do $
+do $$
 begin
   alter publication supabase_realtime add table public.chat_messages;
 exception when duplicate_object then null;
 when undefined_object then null;
-end $;
+end $$;
 
 -- INITIAL SETUP (do this only after creating your own account through the app):
 -- 1) Find your user UUID in Authentication > Users.
