@@ -196,7 +196,7 @@ for delete to authenticated using (
 );
 
 -- Allow realtime subscriptions for shared state and attendance.
-do $
+do $$
 begin
   alter publication supabase_realtime add table public.app_state;
 exception when duplicate_object then null;
