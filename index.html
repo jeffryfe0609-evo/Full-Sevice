@@ -262,5 +262,5 @@ function gmFixedSetupMatch(){const ps=available();['matchA1','matchA2','matchB1'
 function syncMatchGameMode(){if(!$('matchGameMode'))return;$('matchFixedTeams').classList.toggle('hidden',$('matchGameMode').value!=='fixed');gmFixedSetupMatch()}
 function generateMatchQueue(){const mode=$('matchGameMode').value;const oldMode=$('gmMode').value,oldCount=$('gmCount').value,oldCourts=$('gmCourts').value;$('gmMode').value=mode;$('gmCount').value=$('matchGameCount').value||6;$('gmCourts').value=$('courts').value;if(mode==='fixed'){const from=['matchA1','matchA2','matchB1','matchB2'],to=['gmA1','gmA2','gmB1','gmB2'];from.forEach((id,i)=>$(to[i]).value=$(id).value)}gmGenerate();$('gmMode').value=oldMode;$('gmCount').value=oldCount;$('gmCourts').value=oldCourts;gmRefresh()}
 
-render();setTimeout(()=>{if(!authBootstrapDone)authCheckSession()},1200);
+render();
 </script><script>if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}</script></body></html>
