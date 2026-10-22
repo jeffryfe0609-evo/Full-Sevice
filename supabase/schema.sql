@@ -7,6 +7,7 @@ create extension if not exists pgcrypto;
 create table if not exists public.profiles (
   user_id uuid primary key references auth.users(id) on delete cascade,
   display_name text not null check (char_length(trim(display_name)) between 2 and 60),
+  avatar_url text,
   status text not null default 'pending' check (status in ('pending','approved','rejected')),
   role text not null default 'member' check (role in ('member','admin')),
   created_at timestamptz not null default now(),
@@ -102,7 +103,7 @@ for each row execute procedure public.handle_new_user();
 grant usage on schema public to authenticated;
 grant select on public.profiles to authenticated;
 -- Members may edit display_name; admins can manage approval/role fields under RLS.
-grant update (display_name, status, role, approved_at) on public.profiles to authenticated;
+grant update (display_name, avatar_url, status, role, approved_at) on public.profiles to authenticated;
 grant select, insert, update, delete on public.app_state to authenticated;
 grant select, insert, update on public.attendance to authenticated;
 grant select, insert, delete on public.chat_messages to authenticated;
